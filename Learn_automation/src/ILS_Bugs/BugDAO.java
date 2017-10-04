@@ -204,10 +204,10 @@ public class BugDAO {
 			}
 			}
 			
-			if(developerList.containsKey(loginName)){
-				developerList.put(loginName, developerList.get(loginName)+1);
+			if(ANZ_developerList.containsKey(loginName)){
+				ANZ_developerList.put(loginName, ANZ_developerList.get(loginName)+1);
 			}else{
-				developerList.put(loginName, 1);
+				ANZ_developerList.put(loginName, 1);
 			}
 			mailContent+="<td>"+loginName+"</td>";
 		
@@ -230,7 +230,7 @@ public class BugDAO {
 	
 	private static String getDeveloperWiseCountList(String locale) throws Exception{
 
-		Set<String> keySet=developerList.keySet();
+		Set<String> keySet=ANZ_developerList.keySet();
 		Iterator<String> key=keySet.iterator();
 		System.out.println(" ++ Generating developerWiseCount ++ ");
 		String mailContent="<div><b>Individual contribution on bugs </b><table name=\"developerWiseCountTable\">"
@@ -240,7 +240,7 @@ public class BugDAO {
 				+ "</tr>";
 		while(key.hasNext()){
 			String developer=key.next();
-			int count=developerList.get(developer);
+			int count=ANZ_developerList.get(developer);
 			mailContent=mailContent+"<tr><td>"+developer+"</td><td>"+count+"</td></tr>";			
 		}
 		mailContent=mailContent+"</table></div>";
